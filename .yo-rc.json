@@ -1,0 +1,56 @@
+{
+  "generator-jhipster": {
+    "blueprints": [
+      {
+        "name": "generator-jhipster-entando",
+        "version": "7.0.1"
+      }
+    ],
+    "otherModules": [
+      {
+        "name": "generator-jhipster-entando",
+        "version": "7.0.1"
+      }
+    ],
+    "applicationType": "microservice",
+    "baseName": "cdpinnova",
+    "jhipsterVersion": "7.2.0",
+    "skipClient": true,
+    "withAdminUi": false,
+    "skipUserManagement": true,
+    "skipServer": false,
+    "skipCheckLengthOfIdentifier": false,
+    "skipFakeData": false,
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "testFrameworks": [],
+    "pages": [],
+    "creationTimestamp": 1666346497415,
+    "serviceDiscoveryType": false,
+    "reactive": false,
+    "authenticationType": "oauth2",
+    "packageName": "it.keybitz.cdp",
+    "serverPort": "8081",
+    "cacheProvider": "caffeine",
+    "enableHibernateCache": true,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "postgresql",
+    "buildTool": "maven",
+    "serverSideOptions": [],
+    "websocket": false,
+    "searchEngine": false,
+    "messageBroker": false,
+    "enableSwaggerCodegen": false,
+    "microserviceDependencies": "entando",
+    "bundleName": "cdpinnova-bundle",
+    "dockerImageOrganization": "jangalian",
+    "generateMicroFrontends": "always",
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "jwtSecretKey": "OTAzYjEwOGQ1MTNhZTJjZDY3NDY0ODUzYTM4YTk4MTY0N2VlNDU4OWUzZWIzOWQyYjZkZTc2ZDE4NjUzOTk3MzMwOGYwMjA2ZWVhNjc3NTk3NWY0YjY1NTBhYzVhOTkzY2QxYjI1OTE1MzkzOWFhY2MyMjhjZTI1MGY5ZmNjYmM=",
+    "languages": ["en"],
+    "enableGradleEnterprise": false
+  }
+}
