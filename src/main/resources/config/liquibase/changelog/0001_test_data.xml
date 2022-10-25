@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <changeSet id="0001-1" author="Gianmarco" context="dev">
+        <insert tableName="cdp_organization_unit">
+            <column name="id" value="cc99b338-2c3e-4b45-8cef-7aef78bd8b89"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="name" value="Amministrazione"/>
+        </insert>
+        <insert tableName="cdp_organization_unit">
+            <column name="id" value="d4d5706d-6585-4b11-9291-0a51519f8716"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="name" value="IT"/>
+        </insert>
+        <insert tableName="cdp_organization_unit">
+            <column name="id" value="9ba6757d-3cb1-4fbb-9aed-e2f4bb0d8479"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="name" value="Marketing"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="0001-2" author="Gianmarco" context="dev">
+        <insert tableName="cdp_role">
+            <column name="id" value="49e3118e-8db3-4604-a836-acfd06771d3d"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="name" value="Contabile"/>
+            <column name="organization_unit_id"
+                    valueComputed="(select id from cdp_organization_unit where name='Amministrazione')"/>
+        </insert>
+        <insert tableName="cdp_role">
+            <column name="id" value="d96d2509-bbe3-4e00-bfeb-0e9c3b60f237"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="name" value="Segretaria"/>
+            <column name="organization_unit_id"
+                    valueComputed="(select id from cdp_organization_unit where name='Amministrazione')"/>
+        </insert>
+        <insert tableName="cdp_role">
+            <column name="id" value="d5d39402-57be-46bf-bfe8-e2087670f79f"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="name" value="Risorse Umane"/>
+            <column name="organization_unit_id"
+                    valueComputed="(select id from cdp_organization_unit where name='Amministrazione')"/>
+        </insert>
+
+        <insert tableName="cdp_role">
+            <column name="id" value="7648b313-994b-4e57-8393-94686a910ddf"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="name" value="Project Manager"/>
+            <column name="organization_unit_id"
+                    valueComputed="(select id from cdp_organization_unit where name='IT')"/>
+        </insert>
+        <insert tableName="cdp_role">
+            <column name="id" value="fa9f04aa-fac5-4559-b2f3-820277c17e90"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="name" value="Product Owner"/>
+            <column name="organization_unit_id"
+                    valueComputed="(select id from cdp_organization_unit where name='IT')"/>
+        </insert>
+        <insert tableName="cdp_role">
+            <column name="id" value="7c44217f-c28a-4fdd-8618-a6a92d7e39ea"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="name" value="Software Developer"/>
+            <column name="organization_unit_id"
+                    valueComputed="(select id from cdp_organization_unit where name='IT')"/>
+        </insert>
+        <insert tableName="cdp_role">
+            <column name="id" value="e131ed57-287d-47b7-844e-940cece7f047"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="name" value="Software Analyst"/>
+            <column name="organization_unit_id"
+                    valueComputed="(select id from cdp_organization_unit where name='IT')"/>
+        </insert>
+        <insert tableName="cdp_role">
+            <column name="id" value="a8897278-4447-409c-9447-4f20f959907e"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="name" value="DB Administrator"/>
+            <column name="organization_unit_id"
+                    valueComputed="(select id from cdp_organization_unit where name='IT')"/>
+        </insert>
+
+        <insert tableName="cdp_role">
+            <column name="id" value="e2ed7acf-2674-4bad-9adc-0ac084680b90"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="name" value="Social Media Manager"/>
+            <column name="organization_unit_id"
+                    valueComputed="(select id from cdp_organization_unit where name='Marketing')"/>
+        </insert>
+        <insert tableName="cdp_role">
+            <column name="id" value="ed0c0237-e4c6-41bb-8465-de9113d0515e"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="name" value="SEO/SEM Specialist"/>
+            <column name="organization_unit_id"
+                    valueComputed="(select id from cdp_organization_unit where name='Marketing')"/>
+        </insert>
+        <insert tableName="cdp_role">
+            <column name="id" value="570155fd-028e-4cd8-8083-de854b68269f"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="name" value="Community Manager"/>
+            <column name="organization_unit_id"
+                    valueComputed="(select id from cdp_organization_unit where name='Marketing')"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="0001-3" author="Gianmarco" context="dev">
+        <insert tableName="cdp_evangelist">
+            <column name="id" value="5f013f5f-a45a-4ed3-8e9c-0f6a781522d7"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="email" value="SavinoGreco@dayrep.com"/>
+            <column name="name" value="Savino"/>
+            <column name="phone" value="3274434123"/>
+            <column name="status" value="APPROVED"/>
+            <column name="surname" value="Greco"/>
+            <column name="role_id" valueComputed="(select id from cdp_role where name='Contabile')"/>
+        </insert>
+        <insert tableName="cdp_evangelist">
+            <column name="id" value="a66b227e-c130-4818-8714-5c8d174693f4"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="email" value="GiulianaDeRose@jourrapide.com"/>
+            <column name="name" value="Giuliana"/>
+            <column name="phone" value="3568031760"/>
+            <column name="status" value="APPROVED"/>
+            <column name="surname" value="DeRose"/>
+            <column name="role_id" valueComputed="(select id from cdp_role where name='Segretaria')"/>
+        </insert>
+        <insert tableName="cdp_evangelist">
+            <column name="id" value="02e8c7aa-5528-4b4f-8034-148694b873b8"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="email" value="PlacidoGenovesi@teleworm.us"/>
+            <column name="name" value="Placido"/>
+            <column name="phone" value="3394451381"/>
+            <column name="status" value="APPROVED"/>
+            <column name="surname" value="Genovesi"/>
+            <column name="role_id" valueComputed="(select id from cdp_role where name='Segretaria')"/>
+        </insert>
+        <insert tableName="cdp_evangelist">
+            <column name="id" value="0b98d016-70f7-4a04-a670-16b14aa6d010"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="email" value="DaliaPalermo@armyspy.com"/>
+            <column name="name" value="Dalia"/>
+            <column name="phone" value="3748808207"/>
+            <column name="status" value="APPROVED"/>
+            <column name="surname" value="Palermo"/>
+            <column name="role_id" valueComputed="(select id from cdp_role where name='Risorse Umane')"/>
+        </insert>
+        <insert tableName="cdp_evangelist">
+            <column name="id" value="4e568cc8-f7f7-4241-91a3-278c0f27c9a5"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="email" value="GiacintoPiccio@rhyta.com"/>
+            <column name="name" value="Giacinto"/>
+            <column name="phone" value="3733294681"/>
+            <column name="status" value="APPROVED"/>
+            <column name="surname" value="Piccio"/>
+            <column name="role_id" valueComputed="(select id from cdp_role where name='Project Manager')"/>
+        </insert>
+        <insert tableName="cdp_evangelist">
+            <column name="id" value="1d8d234e-c946-4af6-815b-21776410fa8a"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="email" value="PasqualeMazzi@armyspy.com"/>
+            <column name="name" value="Pasquale"/>
+            <column name="phone" value="3926132360"/>
+            <column name="status" value="APPROVED"/>
+            <column name="surname" value="Mazzi"/>
+            <column name="role_id" valueComputed="(select id from cdp_role where name='Product Owner')"/>
+        </insert>
+        <insert tableName="cdp_evangelist">
+            <column name="id" value="2704dec6-ac25-4dc5-b834-4643127b19ba"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="email" value="VirgiliaLiFonti@teleworm.us"/>
+            <column name="name" value="Virgilia"/>
+            <column name="phone" value="3710972420"/>
+            <column name="status" value="APPROVED"/>
+            <column name="surname" value="Li Fonti"/>
+            <column name="role_id" valueComputed="(select id from cdp_role where name='Software Developer')"/>
+        </insert>
+        <insert tableName="cdp_evangelist">
+            <column name="id" value="e59301f2-62a8-49a7-86a9-bbf7796e47fd"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="email" value="AlessioZetticci@armyspy.com"/>
+            <column name="name" value="Alessio"/>
+            <column name="phone" value="3667865125"/>
+            <column name="status" value="APPROVED"/>
+            <column name="surname" value="Zetticci"/>
+            <column name="role_id" valueComputed="(select id from cdp_role where name='Software Developer')"/>
+        </insert>
+        <insert tableName="cdp_evangelist">
+            <column name="id" value="fda0e343-c020-47a4-902e-7cbd54c9676f"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="email" value="AttilioMancini@rhyta.com"/>
+            <column name="name" value="Attilio"/>
+            <column name="phone" value="3179018140"/>
+            <column name="status" value="APPROVED"/>
+            <column name="surname" value="Mancini"/>
+            <column name="role_id" valueComputed="(select id from cdp_role where name='Software Developer')"/>
+        </insert>
+        <insert tableName="cdp_evangelist">
+            <column name="id" value="45eec293-d74d-446b-9a3d-11a9be113316"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="email" value="NeeraRomani@jourrapide.com"/>
+            <column name="name" value="Neera"/>
+            <column name="phone" value="3619857524"/>
+            <column name="status" value="APPROVED"/>
+            <column name="surname" value="Romani"/>
+            <column name="role_id" valueComputed="(select id from cdp_role where name='Software Analyst')"/>
+        </insert>
+        <insert tableName="cdp_evangelist">
+            <column name="id" value="476bcd55-ba22-452f-b867-3430f2f7b441"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="email" value="GiusySchiavone@jourrapide.com"/>
+            <column name="name" value="Giusy"/>
+            <column name="phone" value="3571328395"/>
+            <column name="status" value="APPROVED"/>
+            <column name="surname" value="Schiavone"/>
+            <column name="role_id" valueComputed="(select id from cdp_role where name='DB Administrator')"/>
+        </insert>
+        <insert tableName="cdp_evangelist">
+            <column name="id" value="f8ec4dfe-4a7d-4512-9a1b-0b8a9e989bf0"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="email" value="MuzioLombardi@teleworm.us"/>
+            <column name="name" value="Muzio"/>
+            <column name="phone" value="3462030489"/>
+            <column name="status" value="APPROVED"/>
+            <column name="surname" value="Lombardi"/>
+            <column name="role_id" valueComputed="(select id from cdp_role where name='Social Media Manager')"/>
+        </insert>
+        <insert tableName="cdp_evangelist">
+            <column name="id" value="b67d8630-67a8-4f9f-a128-58de34af5db0"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="email" value="ClaudiaRomano@rhyta.com"/>
+            <column name="name" value="Claudia"/>
+            <column name="phone" value="3341122397"/>
+            <column name="status" value="APPROVED"/>
+            <column name="surname" value="Romano"/>
+            <column name="role_id" valueComputed="(select id from cdp_role where name='Social Media Manager')"/>
+        </insert>
+        <insert tableName="cdp_evangelist">
+            <column name="id" value="0f2fdf58-8cfa-4482-8c70-b8a236cecb30"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="email" value="MarianoTrentino@dayrep.com"/>
+            <column name="name" value="Mariano"/>
+            <column name="phone" value="3452866499"/>
+            <column name="status" value="APPROVED"/>
+            <column name="surname" value="Trentino"/>
+            <column name="role_id" valueComputed="(select id from cdp_role where name='SEO/SEM Specialist')"/>
+        </insert>
+        <insert tableName="cdp_evangelist">
+            <column name="id" value="94e20107-99e4-4b82-91c3-466f7a33f2a4"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="email" value="AngelicaCremonesi@jourrapide.com"/>
+            <column name="name" value="Angelica"/>
+            <column name="phone" value="3329518474"/>
+            <column name="status" value="APPROVED"/>
+            <column name="surname" value="Cremonesi"/>
+            <column name="role_id" valueComputed="(select id from cdp_role where name='Community Manager')"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

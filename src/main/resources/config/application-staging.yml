@@ -1,0 +1,20 @@
+application:
+  frontend-url: https://cdp-innova2-new.sviluppo.key-biz.cloud
+  images-path: /entando-data/images
+  notifications:
+    to:
+      - gpasquariello@keybiz.it
+      - cmarlats@keybiz.it
+      - gcardone@keybiz.it
+      - slanuti@keybiz.it
+
+jhipster:
+  cors:
+    allowed-origins:
+      - ${application.frontend-url}
+      - http://localhost:3000 # per sviluppo
+
+spring:
+  mail:
+    username: servicedesk@keybiz.it # da mettere nel secret!
+    password: Serv_Desk.1234 # da mettere nel secret!

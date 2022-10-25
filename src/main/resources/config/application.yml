@@ -1,34 +1,42 @@
-# ===================================================================
-# Spring Boot configuration.
-#
-# This configuration will be overridden by the Spring profile you use,
-# for example application-dev.yml if you use the "dev" profile.
-#
-# More information on profiles: https://www.jhipster.tech/profiles/
-# More information on configuration properties: https://www.jhipster.tech/common-application-properties/
-# ===================================================================
+application:
+  frontend-url: http://localhost:3000 # URL del FE per generare i link
+  images-path: ./images
+  notifications:
+    from: ${spring.mail.username}
+    to: ${NOTIFICATIONS_TO_EMAILS}
+    configs:
+      evangelist-subscription:
+        subject: Richiesta Nuovo Evangelist
+        frontend-path: "/entando-de-app/en/back_office_innova.page#/lista-evangelist" # path del FE della pagina del BO per la gestione Evangelists (viene incluso nella mail)
+      idea-submission:
+        subject: Nuova Idea Ricevuta
 
-# ===================================================================
-# Standard Spring Boot properties.
-# Full reference is available at:
-# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
-# ===================================================================
+cognistreamer:
+  api:
+    access-token-uri: ${cognistreamer.api.base-url}/oauth2/token
+    base-url: https://cdp-staging.cognistreamer.com
+    client-id: ddd704b9400e462b992488d6bad9404e
+    client-secret: APoejoCAnOhm4iqEdFvC0waDJJFr6oAo
+  batch-size: 50
+  sync-cron: 0 0/30 * * * *
+  clean-images-cron: 0 0 0 * * *
+#  enabledCommunities:
+#    - bfcd257e-3496-46c1-9788-6368dcdc7e08
 
 feign:
   circuitbreaker:
     enabled: true
-  # client:
-  #   config:
-  #     default:
-  #       connectTimeout: 5000
-  #       readTimeout: 5000
+
+logging:
+  level:
+    ROOT: INFO
+
 management:
   endpoints:
     web:
       base-path: /management
       exposure:
-        include:
-          ['configprops', 'env', 'health', 'info', 'jhimetrics', 'logfile', 'loggers', 'prometheus', 'threaddump', 'caches', 'liquibase']
+        include: [ 'configprops', 'env', 'health', 'info', 'jhimetrics', 'logfile', 'loggers', 'prometheus', 'threaddump', 'liquibase' ]
   endpoint:
     health:
       show-details: when_authorized
@@ -47,10 +55,9 @@ management:
       readiness:
         include: readinessState,db
     mail:
-      enabled: false # When using the MailService, configure an SMTP server and set this to true
+      enabled: true
   metrics:
     export:
-      # Prometheus is the default metrics backend
       prometheus:
         enabled: true
         step: 60
@@ -73,50 +80,88 @@ management:
           autotime:
             enabled: true
 
+server:
+  port: 8081
+  servlet:
+    session:
+      cookie:
+        http-only: true
+  shutdown: graceful
+
 spring:
   application:
     name: cdpinnova
+  devtools:
+    livereload:
+      enabled: false # we use Webpack dev server + BrowserSync for livereload
+    restart:
+      enabled: true
+      additional-exclude: static/**
   profiles:
-    # The commented value for `active` can be replaced with valid Spring profiles to load.
-    # Otherwise, it will be filled in by maven when building the JAR file
-    # Either way, it can be overridden by `--spring.profiles.active` value passed in the commandline or `-Dspring.profiles.active` set in `JAVA_OPTS`
-    active: #spring.profiles.active#
+    active:
     group:
       dev:
-        - dev
         - api-docs
-        # Uncomment to activate TLS for the dev profile
-        #- tls
-  jmx:
-    enabled: false
+      staging:
+        - api-docs
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5432/innova2_ds_db
+    username: innova2_ds_db_user
+    password: innova2_ds_db_pass
+    hikari:
+      poolName: Hikari
+      auto-commit: false
   data:
     jpa:
       repositories:
         bootstrap-mode: deferred
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      indent-output: true
+  jmx:
+    enabled: false
   jpa:
+    database-platform: tech.jhipster.domain.util.FixedPostgreSQL10Dialect
     open-in-view: false
     properties:
       hibernate.jdbc.time_zone: UTC
       hibernate.id.new_generator_mappings: true
       hibernate.connection.provider_disables_autocommit: true
-      hibernate.cache.use_second_level_cache: true
+      hibernate.cache.use_second_level_cache: false
       hibernate.cache.use_query_cache: false
       hibernate.generate_statistics: false
-      # modify batch size as necessary
-      hibernate.jdbc.batch_size: 25
+      hibernate.jdbc.batch_size: 100
       hibernate.order_inserts: true
       hibernate.order_updates: true
       hibernate.query.fail_on_pagination_over_collection_fetch: true
       hibernate.query.in_clause_parameter_padding: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: validate
       naming:
         physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
         implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
-  messages:
-    basename: i18n/messages
+    show-sql: false
+  liquibase:
+    contexts: dev
+    url: ${spring.datasource.url}
+  mail:
+    host: smtp.office365.com
+    port: 587
+    username: ${SMTP_USER}
+    password: ${SMTP_PASSWORD}
+    test-connection: true
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enabled: true
+            required: true
   main:
     allow-bean-definition-overriding: true
+  messages:
+    basename: i18n/messages
   task:
     execution:
       thread-name-prefix: cdpinnova-task-
@@ -130,6 +175,10 @@ spring:
         size: 2
   thymeleaf:
     mode: HTML
+    cache: false
+  sleuth:
+    sampler:
+      probability: 1
   output:
     ansi:
       console-available: true
@@ -144,16 +193,14 @@ spring:
             client-id: internal
             client-secret: internal
             scope: openid,profile,email
+  zipkin: # Use the "zipkin" Maven profile to have the Spring Cloud Zipkin dependencies
+    base-url: http://localhost:9411
+    enabled: false
+    locator:
+      discovery:
+        enabled: true
 
-server:
-  servlet:
-    session:
-      cookie:
-        http-only: true
-
-# Properties to be exposed on the /info management endpoint
 info:
-  # Comma separated list of profiles that will trigger the ribbon to show
   display-ribbon-on-profiles: 'dev'
 
 # ===================================================================
@@ -161,18 +208,24 @@ info:
 #
 # Full reference is available at: https://www.jhipster.tech/common-application-properties/
 # ===================================================================
-
 jhipster:
   clientApp:
     name: 'cdpinnovaApp'
-  # By default CORS is disabled. Uncomment to enable.
-  # cors:
-  #   allowed-origins: "http://localhost:8100,http://localhost:9000"
-  #   allowed-methods: "*"
-  #   allowed-headers: "*"
-  #   exposed-headers: "Authorization,Link,X-Total-Count,X-${jhipster.clientApp.name}-alert,X-${jhipster.clientApp.name}-error,X-${jhipster.clientApp.name}-params"
-  #   allow-credentials: true
-  #   max-age: 1800
+  cors:
+    allowed-origins:
+      - ${application.frontend-url}
+    allowed-methods: "*"
+    allowed-headers: "*"
+    exposed-headers: "Authorization,Link,X-Total-Count,X-${jhipster.clientApp.name}-alert,X-${jhipster.clientApp.name}-error,X-${jhipster.clientApp.name}-params"
+    allow-credentials: true
+    max-age: 1800
+  logging:
+    use-json-format: false
+    logstash:
+      enabled: false
+      host: localhost
+      port: 5000
+      queue-size: 512
   mail:
     from: cdpinnova@localhost
   api-docs:
@@ -194,16 +247,10 @@ jhipster:
         - account
         - api://default
 
+springfox:
+  documentation:
+    enabled: true
+
 swagger-ui:
   client-id: swagger_ui
   client-secret: swagger_ui
-# ===================================================================
-# Application specific properties
-# Add your own application properties here, see the ApplicationProperties class
-# to have type-safe configuration, like in the JHipsterProperties above
-#
-# More documentation is available at:
-# https://www.jhipster.tech/common-application-properties/
-# ===================================================================
-
-# application:

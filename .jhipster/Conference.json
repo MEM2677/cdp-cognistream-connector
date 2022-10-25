@@ -1,0 +1,19 @@
+{
+  "microserviceName": "cdpinnova",
+  "clientRootFolder": "cdpinnova",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [],
+  "service": "serviceClass",
+  "dto": "no",
+  "jpaMetamodelFiltering": true,
+  "readOnly": false,
+  "pagination": "infinite-scroll",
+  "name": "Conference",
+  "changelogDate": "20221021100952"
+}

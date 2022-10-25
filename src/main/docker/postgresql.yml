@@ -6,10 +6,11 @@ services:
     # volumes:
     #   - ~/volumes/jhipster/cdpinnova/postgresql/:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_USER=cdpinnova
-      - POSTGRES_PASSWORD=
+      - POSTGRES_DB=innova2_ds_db
+      - POSTGRES_USER=innova2_ds_db_user
+      - POSTGRES_PASSWORD=innova2_ds_db_pass
       - POSTGRES_HOST_AUTH_METHOD=trust
     # If you want to expose these ports outside your dev PC,
     # remove the "127.0.0.1:" prefix
     ports:
-      - 127.0.0.1:5432:5432
+      - 5432:5432

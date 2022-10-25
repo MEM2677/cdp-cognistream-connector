@@ -1,0 +1,279 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet author="gianmarco (generated)" id="1663686219821-1">
+        <createTable tableName="cdp_challenge">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="cdp_challengePK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="image" type="JSON"/>
+            <column name="to_delete" type="BOOLEAN"/>
+            <column name="contribution_count" type="INTEGER"/>
+            <column name="description_html" type="TEXT"/>
+            <column name="stage_id" type="VARCHAR(255)"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="type" type="INTEGER"/>
+            <column name="program_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="gianmarco (generated)" id="1663686219821-2">
+        <createTable tableName="cdp_community">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="cdp_communityPK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="image" type="JSON"/>
+            <column name="to_delete" type="BOOLEAN"/>
+            <column name="description_html" type="TEXT"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="url" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="gianmarco (generated)" id="1663686219821-3">
+        <createTable tableName="cdp_contribution">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="cdp_contributionPK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="image" type="JSON"/>
+            <column name="to_delete" type="BOOLEAN"/>
+            <column name="comment_count" type="INTEGER"/>
+            <column name="date_created_utc" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="description" type="TEXT"/>
+            <column name="downvote_count" type="INTEGER"/>
+            <column name="fields" type="JSON"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="upvote_count" type="INTEGER"/>
+            <column name="uri" type="VARCHAR(255)"/>
+            <column name="challenge_id" type="UUID"/>
+            <column name="creator_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="gianmarco (generated)" id="1663686219821-4">
+        <createTable tableName="cdp_creator">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="cdp_creatorPK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="gianmarco (generated)" id="1663686219821-5">
+        <createTable tableName="cdp_evangelist">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="cdp_evangelistPK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reason" type="VARCHAR(1000)"/>
+            <column name="status" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surname" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="gianmarco (generated)" id="1663686219821-6">
+        <createTable tableName="cdp_evangelist_process_step">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="cdp_evangelist_process_stepPK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="position" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="gianmarco (generated)" id="1663686219821-7">
+        <createTable tableName="cdp_idea">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="cdp_ideaPK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="expectations" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="problem" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surname" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="gianmarco (generated)" id="1663686219821-8">
+        <createTable tableName="cdp_organization_unit">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="cdp_organization_unitPK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="gianmarco (generated)" id="1663686219821-9">
+        <createTable tableName="cdp_program">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="cdp_programPK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="image" type="JSON"/>
+            <column name="to_delete" type="BOOLEAN"/>
+            <column name="date_created_utc" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="description_html" type="TEXT"/>
+            <column name="is_published" type="BOOLEAN"/>
+            <column name="start_date_utc" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="url" type="VARCHAR(255)"/>
+            <column name="community_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="gianmarco (generated)" id="1663686219821-10">
+        <createTable tableName="cdp_role">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="cdp_rolePK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="organization_unit_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="gianmarco (generated)" id="1663686219821-11">
+        <createTable tableName="cdp_service">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="cdp_servicePK"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="link" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="position" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="gianmarco (generated)" id="1663686219821-12">
+        <addUniqueConstraint columnNames="position" constraintName="UC_CDP_EVANGELIST_PROCESS_STEPPOSITION_COL" tableName="cdp_evangelist_process_step" initiallyDeferred="true"/>
+    </changeSet>
+    <changeSet author="gianmarco (generated)" id="1663686219821-13">
+        <addUniqueConstraint columnNames="position" constraintName="UC_CDP_SERVICEPOSITION_COL" tableName="cdp_service" initiallyDeferred="true"/>
+    </changeSet>
+    <changeSet author="gianmarco (generated)" id="1663686219821-14">
+        <addForeignKeyConstraint baseColumnNames="program_id" baseTableName="cdp_challenge" constraintName="FK6d3r9ih4x8o2axdy41lnyixuv" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="cdp_program" validate="true"/>
+    </changeSet>
+    <changeSet author="gianmarco (generated)" id="1663686219821-15">
+        <addForeignKeyConstraint baseColumnNames="creator_id" baseTableName="cdp_contribution" constraintName="FKa56ffuif886ok13p0l0hrr1q3" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="cdp_creator" validate="true"/>
+    </changeSet>
+    <changeSet author="gianmarco (generated)" id="1663686219821-16">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="cdp_evangelist" constraintName="FKdr17ca4jqne1hvycfcqf338kd" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="cdp_role" validate="true"/>
+    </changeSet>
+    <changeSet author="gianmarco (generated)" id="1663686219821-17">
+        <addForeignKeyConstraint baseColumnNames="challenge_id" baseTableName="cdp_contribution" constraintName="FKobmn2cm0hu1tiy8xksnj1a6m7" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="cdp_challenge" validate="true"/>
+    </changeSet>
+    <changeSet author="gianmarco (generated)" id="1663686219821-18">
+        <addForeignKeyConstraint baseColumnNames="organization_unit_id" baseTableName="cdp_role" constraintName="FKprit5j1nnm0f0k8sjtbhwsa2c" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="cdp_organization_unit" validate="true"/>
+    </changeSet>
+    <changeSet author="gianmarco (generated)" id="1663686219821-19">
+        <addForeignKeyConstraint baseColumnNames="community_id" baseTableName="cdp_program" constraintName="FKstbexgvhursee14uulmovlwhd" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="cdp_community" validate="true"/>
+    </changeSet>
+
+    <changeSet id="0000" author="Gianmarco">
+        <createTable tableName="shedlock">
+            <column name="name" type="varchar">
+                <constraints primaryKey="true" primaryKeyName="name_PK"/>
+            </column>
+            <column name="lock_until" type="timestamp"/>
+            <column name="locked_at" type="timestamp"/>
+            <column name="locked_by" type="varchar"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

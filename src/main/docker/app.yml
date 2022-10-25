@@ -1,26 +1,14 @@
 version: '3.8'
 services:
   cdpinnova-app:
-    image: jangalian/cdpinnova
+    image: registry.key-biz.cloud/cl/entando/cdp/innova/cdp-innova-cognistreamer-connector/cdpinnova:0.0.1-SNAPSHOT
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
-      - SPRING_PROFILES_ACTIVE=prod,api-docs
+      - SPRING_PROFILES_ACTIVE=dev,api-docs
       - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://cdpinnova-postgresql:5432/cdpinnova
-      - SPRING_LIQUIBASE_URL=jdbc:postgresql://cdpinnova-postgresql:5432/cdpinnova
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://cdpinnova-postgresql:5432/innova2_ds_db
+      - SPRING_LIQUIBASE_URL=jdbc:postgresql://cdpinnova-postgresql:5432/innova2_ds_db
       - SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_OIDC_ISSUER_URI=http://keycloak:9080/auth/realms/jhipster
       - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_ID=internal
       - SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_OIDC_CLIENT_SECRET=internal
-      - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
-  cdpinnova-postgresql:
-    image: postgres:13.4
-    # volumes:
-    #   - ~/volumes/jhipster/cdpinnova/postgresql/:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_USER=cdpinnova
-      - POSTGRES_PASSWORD=
-      - POSTGRES_HOST_AUTH_METHOD=trust
-    # If you want to expose these ports outside your dev PC,
-    # remove the "127.0.0.1:" prefix
-    ports:
-      - 127.0.0.1:5432:5432
+#      - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application

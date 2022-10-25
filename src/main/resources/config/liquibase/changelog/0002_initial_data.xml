@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+
+    <changeSet id="0002-1" author="Gianmarco">
+        <insert tableName="cdp_service">
+            <column name="id" value="0aa1fb7f-7f98-4292-9b00-22385ee54057"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="title" value="CALL4IDEA" />
+            <column name="description" value="Ricerca di idee innovative per rispondere ad un bisogno specifico" />
+            <column name="link" value="#" />
+            <column name="position" value="1" />
+        </insert>
+        <insert tableName="cdp_service">
+            <column name="id" value="58096242-b598-42d9-97be-527d4d0cc27d"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="title" value="CALL4SOLUTION" />
+            <column name="description" value="Ricerca di soluzioni con l’obiettivo di scoprire soluzioni innovative" />
+            <column name="link" value="#" />
+            <column name="position" value="2" />
+        </insert>
+        <insert tableName="cdp_service">
+            <column name="id" value="5cff315b-29d6-46f8-95e1-ea674a587442"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="title" value="FORMAZIONE METODOLOGIA AGILE E DESIGN THINKING" />
+            <column name="description" value="Generare prodotti a servizi  che abbiano valore per l’utente" />
+            <column name="link" value="#" />
+            <column name="position" value="3" />
+        </insert>
+    </changeSet>
+
+    <changeSet id="0002-2" author="Gianmarco">
+        <insert tableName="cdp_evangelist_process_step">
+            <column name="id" value="51158ab0-8e37-47ab-adce-1913d7970a40"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="description" value="Sottometti la tua candidatura nelle finestre disponibili" />
+            <column name="position" value="1" />
+        </insert>
+        <insert tableName="cdp_evangelist_process_step">
+            <column name="id" value="2517e85d-f1f9-486b-86e1-e2d64177199d"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="description" value="Il team IL&amp;DT valuterà la candidatura" />
+            <column name="position" value="2" />
+        </insert>
+        <insert tableName="cdp_evangelist_process_step">
+            <column name="id" value="e7d6f7ac-c22c-45d6-9d47-150d8b34fff6"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="description" value="Se ci sono più candidati per area verrà approfondita la motivazione" />
+            <column name="position" value="3" />
+        </insert>
+        <insert tableName="cdp_evangelist_process_step">
+            <column name="id" value="836f158a-5368-42e1-bde7-eca662263214"/>
+            <column name="created_by" value="liquibase"/>
+            <column name="last_modified_by" value="liquibase"/>
+            <column name="created_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="last_modified_date" type="timestamp" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="description" value="Ricevi l’esito della tua candidatura" />
+            <column name="position" value="4" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>
